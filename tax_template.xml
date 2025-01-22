@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!-- This file is part of the account-de-skr04-module for Tryton from m-ds.de.
+ The COPYRIGHT file at the top level of
+ this repository contains the full copyright notices and license terms.-->
+<tryton>
+    <data>
+
+        <!-- Nicht steuerbar für Drittland-EU -->
+        <record id="tax_inner_eu_not_taxable" model="account.tax.template">
+            <field name="name">Steuerfreie innergem. Lieferung (§4 Abs. 1b UStG)</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Steuerfreie Innergemeinsachftliche Lieferung von Waren</field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3800"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
+            <field name="group" ref="tax_group_ust_goods"/>
+        </record>
+
+
+
+    </data>
+</tryton>
