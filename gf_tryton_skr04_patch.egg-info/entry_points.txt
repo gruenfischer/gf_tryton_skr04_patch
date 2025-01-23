@@ -1,0 +1,2 @@
+[trytond.modules]
+tryton_skr04_patch = trytond.modules.tryton_skr04_patch

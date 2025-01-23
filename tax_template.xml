@@ -5,7 +5,7 @@
 <tryton>
     <data>
 
-        <!-- Nicht steuerbar für Drittland-EU -->
+        <!-- Umsatzsteuer Waren -->
         <record id="tax_inner_eu_not_taxable" model="account.tax.template">
             <field name="name">Steuerfreie innergem. Lieferung (§4 Abs. 1b UStG)</field>
             <field name="account" ref="account_de_skr04.root_de"/>
@@ -16,8 +16,119 @@
             <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
             <field name="group" ref="tax_group_ust_goods"/>
         </record>
+        <record id="tax_innner_eu_delivery" model="account.tax.template">
+            <field name="name">Steuerfreie Ausfuhr (§4 Nr. 1a UStG)</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Steuerfreie Innergemeinsachftliche Ausfuhr von Waren </field>
+            <field name="legal_notice">Steuerfreie innergemeinschaftliche Lieferung gemäß § 4 Nr. 1b i.V.m. § 6a UStG </field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3800"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
+            <field name="group" ref="tax_group_ust_goods"/>
+        </record>
+        <record id="tax_de_ust_delivery_19" model="account.tax.template">
+            <field name="name">Umsatzsteuer 19% für Waren</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Standard Umsatzsteuer voller Satz für Waren</field>
+            <field name="legal_notice"></field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('7.0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3801"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3801"/>
+            <field name="group" ref="tax_group_ust_goods"/>
+        </record>
+        <record id="tax_de_ust_delivery_7" model="account.tax.template">
+            <field name="name">Umsatzsteuer 7% für Waren</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Standard Umsatzsteuer ermäßigter Satz für Waren</field>
+            <field name="legal_notice"></field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('7.0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3806"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3806"/>
+            <field name="group" ref="tax_group_ust_goods"/>
+        </record>
+        <record id="tax_de_ust_delivery_0" model="account.tax.template">
+            <field name="name">Umsatzsteuer 0% für Waren</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">z.B. für Photovoltaikanlagen</field>
+            <field name="legal_notice"></field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('0.0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3800"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
+            <field name="group" ref="tax_group_ust_goods"/>
+        </record>
 
-
-
+        <!-- Ende Umsatzsteuer Waren-->
+        <!-- Begin Umsatzsteuer Dienstleistunge-->
+        <record id="tax_de_delivery_13b" model="account.tax.template">
+            <field name="name">Umsatzsteuer  § 13b Absatz 5 UStG  Inland</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Steuerpflichtige Umsätze des leistenden Unternehmers, für die der Leistungsempfänger die Steuer nach § 13b Absatz 5 UStG schuldet, z.B. Subunternehmer im Handwerk</field>
+            <field name="legal_notice">Steuerschuldnerschaft des Leistungsempfängers gemäß § 13b Abs. 5 UStG.</field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('0.0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3800"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
+            <field name="group" ref="tax_group_ust_service"/>
+        </record>
+        <record id="tax_de_eu_delivery_service" model="account.tax.template">
+            <field name="name">Steuerfreie Innergemeinsachftliche Lieferung Sonstige Leistung § 3a Absatz 2 UStG </field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Lieferung von innergemeinschalfichen Dienstleistungen</field>
+            <field name="legal_notice">Innergemeinschaftliche sonstige Leistung gemäß § 3a Abs. 2 UStG. Die Steuerschuldnerschaft geht gemäß Reverse-Charge-Verfahren auf den Leistungsempfänger über.</field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('0.0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3800"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
+            <field name="group" ref="tax_group_ust_service"/>
+        </record>
+        <record id="tax_de_au_delivery_service" model="account.tax.template">
+            <field name="name">Nicht steuerbare Umsätze (Leistungsort nicht im Inland) </field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Lieferung von Dienstleistungen in Drittländern</field>
+            <field name="legal_notice">Rechnung enthält keine Umsatzsteuer aufgrund des Leistungsortes im Ausland</field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('0.0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3800"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
+            <field name="group" ref="tax_group_ust_service"/>
+        </record>
+        <record id="tax_de_vst_delivery_19" model="account.tax.template">
+            <field name="name">Umsatzsteuer 19% Sonstige Leistung </field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Dienstleistungen im Inland voller Satz</field>
+            <field name="legal_notice"></field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('19.0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3806"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3806"/>
+            <field name="group" ref="tax_group_ust_service"/>
+        </record>
+        <record id="tax_de_vst_delivery_7" model="account.tax.template">
+            <field name="name">Umsatzsteuer 7% Sonstige Leistung </field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Dienstleistungen im Inland ermäßigter Satz</field>
+            <field name="legal_notice"></field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('7.0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3801"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3801"/>
+            <field name="group" ref="tax_group_ust_service"/>
+        </record>
+        <record id="tax_de_vst_delivery_0" model="account.tax.template">
+            <field name="name">Umsatzsteuer 0% Sonstige Leistung </field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="description">Dienstleistungen im Inland steuerfrei, z.b. Solaranlagen Dienstleisungen</field>
+            <field name="legal_notice"></field>
+            <field name="type">percentage</field>
+            <field eval="Decimal('0.0')" name="rate"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3800"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
+            <field name="group" ref="tax_group_ust_service"/>
+        </record>
+        <!-- Ende Umsatzsteuer Dienstleistungen-->
     </data>
 </tryton>
