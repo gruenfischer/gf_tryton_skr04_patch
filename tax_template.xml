@@ -5,29 +5,30 @@
 <tryton>
     <data>
 
-        <!-- Umsatzsteuer Waren -->
+        <!-- Doppelter Albestand? Waren -->
         <record id="tax_inner_eu_not_taxable" model="account.tax.template">
             <field name="name">Steuerfreie innergem. Lieferung (§4 Abs. 1b UStG)</field>
             <field name="account" ref="account_de_skr04.root_de"/>
-            <field name="description">Steuerfreie Innergemeinsachftliche Lieferung von Waren</field>
+            <field name="description">Steuerfreie Innergemeinschaftliche Lieferung von Waren</field>
             <field name="type">percentage</field>
             <field eval="Decimal('0')" name="rate"/>
             <field name="invoice_account" ref="account_de_skr04.account_3800"/>
             <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
             <field name="group" ref="tax_group_ust_goods"/>
         </record>
-        <record id="tax_innner_eu_delivery" model="account.tax.template">
-            <field name="name">Steuerfreie Ausfuhr (§4 Nr. 1a UStG)</field>
+        <!-- Umsatzsteuer Waren -->
+        <record id="tax_innner_au_delivery" model="account.tax.template">
+            <field name="name">Steuerfreie  Lieferung Ausfuhr (§4 Nr. 1a UStG)</field>
             <field name="account" ref="account_de_skr04.root_de"/>
-            <field name="description">Steuerfreie Innergemeinsachftliche Ausfuhr von Waren </field>
-            <field name="legal_notice">Steuerfreie innergemeinschaftliche Lieferung gemäß § 4 Nr. 1b i.V.m. § 6a UStG </field>
+            <field name="description">Steuerfreie  Ausfuhr Lieferung   von Waren </field>
+            <field name="legal_notice">Steuerfreie  Ausfuhr  gemäß § 4 Nr. 1a i.V.m. § 6a UStG </field>
             <field name="type">percentage</field>
             <field eval="Decimal('0')" name="rate"/>
             <field name="invoice_account" ref="account_de_skr04.account_3800"/>
             <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
             <field name="group" ref="tax_group_ust_goods"/>
         </record>
-        <record id="tax_de_ust_delivery_19" model="account.tax.template">
+        <record id="tax_de_ust_delivery_19_goods" model="account.tax.template">
             <field name="name">Umsatzsteuer 19% für Waren</field>
             <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Standard Umsatzsteuer voller Satz für Waren</field>
@@ -38,7 +39,7 @@
             <field name="credit_note_account" ref="account_de_skr04.account_3801"/>
             <field name="group" ref="tax_group_ust_goods"/>
         </record>
-        <record id="tax_de_ust_delivery_7" model="account.tax.template">
+        <record id="tax_de_ust_delivery_7_goods" model="account.tax.template">
             <field name="name">Umsatzsteuer 7% für Waren</field>
             <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Standard Umsatzsteuer ermäßigter Satz für Waren</field>
@@ -49,7 +50,7 @@
             <field name="credit_note_account" ref="account_de_skr04.account_3806"/>
             <field name="group" ref="tax_group_ust_goods"/>
         </record>
-        <record id="tax_de_ust_delivery_0" model="account.tax.template">
+        <record id="tax_de_ust_delivery_0_goods" model="account.tax.template">
             <field name="name">Umsatzsteuer 0% für Waren</field>
             <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">z.B. für Photovoltaikanlagen</field>
@@ -75,7 +76,7 @@
             <field name="group" ref="tax_group_ust_service"/>
         </record>
         <record id="tax_de_eu_delivery_service" model="account.tax.template">
-            <field name="name">Steuerfreie Innergemeinsachftliche Lieferung Sonstige Leistung § 3a Absatz 2 UStG </field>
+            <field name="name">Steuerfreie Innergemeinschaftliche Lieferung Sonstige Leistung § 3a Absatz 2 UStG </field>
             <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Lieferung von innergemeinschalfichen Dienstleistungen</field>
             <field name="legal_notice">Innergemeinschaftliche sonstige Leistung gemäß § 3a Abs. 2 UStG. Die Steuerschuldnerschaft geht gemäß Reverse-Charge-Verfahren auf den Leistungsempfänger über.</field>
@@ -134,165 +135,165 @@
         <!-- Beginn Vorsteuer Waren-->
         <record id="tax_eu_s13b_abs1_19_vst_ust_new" model="account.tax.template">
             <field name="name">Innergem. Sonstige Leistung  §13b Abs 1 UStG VST19%/UST19%</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Steuer für die gleichzeitige Verbuchung von Vor- und Umsatzsteuer</field>
             <field name="type">none</field>
             <field name="group" ref="tax_group_vst_service"/>
         </record>
         <record id="tax_eu_s13b_abs1_19_vst_new" model="account.tax.template">
             <field name="name">19% Vorsteuer erhaltenen EU-Leistungen §13b Abs.1</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">19% VSt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.19')"/>
-            <field name="invoice_account" ref="account_1404"/>
-            <field name="credit_note_account" ref="account_1404"/>
+            <field name="invoice_account" ref="account_de_skr04.account_1404"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_1404"/>
             <field name="parent" ref="tax_eu_s13b_abs1_19_vst_ust_new"/>
         </record>
         <record id="tax_eu_s13b_abs1_19_ust_new" model="account.tax.template">
             <field name="name">19% Umsatzsteuer  erhaltenen EU-Leistungen §13b Abs.1</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">19% USt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.19')"/>
-            <field name="invoice_account" ref="account_3804"/>
-            <field name="credit_note_account" ref="account_3804"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3804"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3804"/>
             <field name="parent" ref="tax_eu_s13b_abs1_19_vst_ust_new"/>
         </record>
         <record id="tax_eu_s13b_abs1_7_vst_ust_new" model="account.tax.template">
             <field name="name">Innergem. Sonstige Leistung  §13b Abs 1 UStG VST7%/UST7%</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Steuer für die gleichzeitige Verbuchung von Vor- und Umsatzsteuer</field>
             <field name="type">none</field>
             <field name="group" ref="tax_group_vst_service"/>
         </record>
         <record id="tax_eu_s13b_abs1_7_vst_new" model="account.tax.template">
             <field name="name">7% Vorsteuer erhaltenen EU-Leistungen §13b Abs.1</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">7% VSt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.07')"/>
-            <field name="invoice_account" ref="account_1402"/>
-            <field name="credit_note_account" ref="account_1402"/>
+            <field name="invoice_account" ref="account_de_skr04.account_1402"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_1402"/>
             <field name="parent" ref="tax_eu_s13b_abs1_7_vst_ust_new"/>
         </record>
         <record id="tax_eu_s13b_abs1_7_ust_new" model="account.tax.template">
             <field name="name">7% Umsatzsteuer erhaltenen EU-Leistungen §13b Abs.1</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">7% USt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.07')"/>
-            <field name="invoice_account" ref="account_3802"/>
-            <field name="credit_note_account" ref="account_3802"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3802"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3802"/>
             <field name="parent" ref="tax_eu_s13b_abs1_7_vst_ust_new"/>
         </record>
 
         <record id="tax_eu_s13b_abs1_0_vst_ust_new" model="account.tax.template">
             <field name="name">Innergem. Sonstige Leistung  §13b Abs 1 UStG VST0%/UST0%</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Steuer für die gleichzeitige Verbuchung von Vor- und Umsatzsteuer</field>
             <field name="type">none</field>
             <field name="group" ref="tax_group_vst_service"/>
         </record>
-        <record id="tax_eu_s13b_abs1_19_vst_new" model="account.tax.template">
+        <record id="tax_eu_s13b_abs0_vst_new" model="account.tax.template">
             <field name="name">0% Vorsteuer erhaltenen EU-Leistungen §13b Abs.1</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">0% VSt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.0')"/>
-            <field name="invoice_account" ref="account_1402"/>
-            <field name="credit_note_account" ref="account_1402"/>
+            <field name="invoice_account" ref="account_de_skr04.account_1402"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_1402"/>
             <field name="parent" ref="tax_eu_s13b_abs1_0_vst_ust_new"/>
         </record>
-        <record id="tax_eu_s13b_abs1_19_ust_new" model="account.tax.template">
+        <record id="tax_eu_s13b_abs1_0_ust_new" model="account.tax.template">
             <field name="name">0% Umsatzsteuer  erhaltenen EU-Leistungen §13b Abs.1</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">0% USt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.0')"/>
-            <field name="invoice_account" ref="account_3802"/>
-            <field name="credit_note_account" ref="account_3802"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3802"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3802"/>
             <field name="parent" ref="tax_eu_s13b_abs1_0_vst_ust_new"/>
         </record>
         <record id="tax_dritt_s13b_abs2_19_vst_ust_new" model="account.tax.template">
             <field name="name">Sonstige Leistung Drittland §13b Abs 2 UStG VSt 19%/USt 19%</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Steuer für die gleichzeitige Verbuchung von Vor- und Umsatzsteuer</field>
             <field name="type">none</field>
             <field name="group" ref="tax_group_vst_service"/>
         </record>
         <record id="tax_dritt_s13b_abs2_19_vst_new" model="account.tax.template">
             <field name="name">19% Vorsteuer Drittland Leistungen §13b Abs.2</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">19% Einfuhr VSt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.19')"/>
-            <field name="invoice_account" ref="account_1406"/>
-            <field name="credit_note_account" ref="account_1406"/>
+            <field name="invoice_account" ref="account_de_skr04.account_1406"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_1406"/>
             <field name="parent" ref="tax_dritt_s13b_abs2_19_vst_ust_new"/>
         </record>
         <record id="tax_dritt_s13b_abs2_19_ust_new" model="account.tax.template">
             <field name="name">19% Umsatzsteuer Drittland Leistungen §13b Abs.2</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">19% USt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.19')"/>
-            <field name="invoice_account" ref="account_3806"/>
-            <field name="credit_note_account" ref="account_3806"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3806"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3806"/>
             <field name="parent" ref="tax_dritt_s13b_abs2_19_vst_ust_new"/>
         </record>
         <record id="tax_dritt_s13b_abs2_7_vst_ust_new" model="account.tax.template">
             <field name="name">Sonstige Leistung Drittland §13b Abs 2 UStG VSt 7%/USt 7%</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Steuer für die gleichzeitige Verbuchung von Vor- und Umsatzsteuer</field>
             <field name="type">none</field>
             <field name="group" ref="tax_group_vst_service"/>
         </record>
         <record id="tax_dritt_s13b_abs2_7_vst_new" model="account.tax.template">
             <field name="name">7% Vorsteuer Drittland Leistungen §13b Abs.2</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">7% Einfuhr VSt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.07')"/>
-            <field name="invoice_account" ref="account_1401"/>
-            <field name="credit_note_account" ref="account_1401"/>
+            <field name="invoice_account" ref="account_de_skr04.account_1401"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_1401"/>
             <field name="parent" ref="tax_dritt_s13b_abs2_7_vst_ust_new"/>
         </record>
         <record id="tax_dritt_s13b_abs2_7_ust_new" model="account.tax.template">
             <field name="name">7% Umsatzsteuer Drittland Leistungen §13b Abs.2</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">7% USt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.07')"/>
-            <field name="invoice_account" ref="account_3801"/>
-            <field name="credit_note_account" ref="account_3801"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3801"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3801"/>
             <field name="parent" ref="tax_dritt_s13b_abs2_7_vst_ust_new"/>
         </record>
         <record id="tax_dritt_s13b_abs2_0_vst_ust_new" model="account.tax.template">
             <field name="name">Sonstige Leistung Drittland §13b Abs 2 UStG VSt 0%/USt 0%</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Steuer für die gleichzeitige Verbuchung von Vor- und Umsatzsteuer</field>
             <field name="type">none</field>
             <field name="group" ref="tax_group_vst_service"/>
         </record>
         <record id="tax_dritt_s13b_abs2_0_vst_new" model="account.tax.template">
             <field name="name">0% Vorsteuer Drittland Leistungen §13b Abs.2</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">0% Einfuhr VSt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.00')"/>
-            <field name="invoice_account" ref="account_1400"/>
-            <field name="credit_note_account" ref="account_1400"/>
+            <field name="invoice_account" ref="account_de_skr04.account_1400"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_1400"/>
             <field name="parent" ref="tax_dritt_s13b_abs2_0_vst_ust_new"/>
         </record>
         <record id="tax_dritt_s13b_abs2_0_ust_new" model="account.tax.template">
             <field name="name">0% Umsatzsteuer Drittland Leistungen §13b Abs.2</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">0% USt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.00')"/>
-            <field name="invoice_account" ref="account_3800"/>
-            <field name="credit_note_account" ref="account_3800"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3800"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3800"/>
             <field name="parent" ref="tax_dritt_s13b_abs2_0_vst_ust_new"/>
         </record>
     <record id="tax_de_vst_purchase_19_service" model="account.tax.template">
@@ -362,98 +363,98 @@
             <field name="credit_note_account" ref="account_de_skr04.account_1400"/>
             <field name="group" ref="tax_group_vst_goods"/>
         </record>
-        <!-- Bginn Innergemeinchaftlicher Erwerb Waren-->
+        <!-- Beginn Innergemeinchaftlicher Erwerb Waren-->
         <record id="tax_eu_inner_erwerb_19_vst_ust_new" model="account.tax.template">
             <field name="name">Innergemeinschaftlicher Erwerb VST19%/UST19%</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Steuer für die gleichzeitige Verbuchung von Vor- und Umsatzsteuer</field>
             <field name="type">none</field>
             <field name="group" ref="tax_group_vst_goods"/>
         </record>
         <record id="tax_eu_inner_erwerb_19_vst_new" model="account.tax.template">
             <field name="name">19% Vorsteuer Innergemeinschaftlicher Erwerb </field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">19% VSt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.19')"/>
-            <field name="invoice_account" ref="account_1404"/>
-            <field name="credit_note_account" ref="account_1404"/>
+            <field name="invoice_account" ref="account_de_skr04.account_1404"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_1404"/>
             <field name="parent" ref="tax_eu_inner_erwerb_19_vst_ust_new"/>
         </record>
         <record id="tax_eu_inner_erwerb_19_ust_new" model="account.tax.template">
             <field name="name">19% Umsatzsteuer Innergemeinschaftlicher Erwerb </field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">19% USt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.19')"/>
-            <field name="invoice_account" ref="account_3804"/>
-            <field name="credit_note_account" ref="account_3804"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3804"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3804"/>
             <field name="parent" ref="tax_eu_inner_erwerb_19_vst_ust_new"/>
         </record>
         <record id="tax_eu_inner_erwerb_7_vst_ust_new" model="account.tax.template">
             <field name="name">Innergemeinschaftlicher Erwerb VST7%/UST7%</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Steuer Innergemeinschaftlicher Erwerb Vor- und Umsatzsteuer</field>
             <field name="type">none</field>
             <field name="group" ref="tax_group_vst_goods"/>
         </record>
         <record id="tax_eu_inner_erwerb_7_vst_new" model="account.tax.template">
             <field name="name">7% Vorsteuer Innergemeinschaftlicher Erwerb</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">7% VSt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.07')"/>
-            <field name="invoice_account" ref="account_1402"/>
-            <field name="credit_note_account" ref="account_1402"/>
+            <field name="invoice_account" ref="account_de_skr04.account_1402"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_1402"/>
             <field name="parent" ref="tax_eu_inner_erwerb_7_vst_ust_new"/>
         </record>
         <record id="tax_eu_inner_erwerb_7_ust_new" model="account.tax.template">
             <field name="name">7% Umsatzsteuer Innergemeinschaftlicher Erwerb</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">7% USt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.07')"/>
-            <field name="invoice_account" ref="account_3802"/>
-            <field name="credit_note_account" ref="account_3802"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3802"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3802"/>
             <field name="parent" ref="tax_eu_inner_erwerb_7_vst_ust_new"/>
         </record>
 
         <record id="tax_eu_inner_erwerb_0_vst_ust_new" model="account.tax.template">
             <field name="name">Innergemeinschaftlicher ErwerbVST0%/UST0%</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Steuer für die gleichzeitige Verbuchung von Vor- und Umsatzsteuer</field>
             <field name="type">none</field>
             <field name="group" ref="tax_group_vst_goods"/>
         </record>
-        <record id="tax_eu_inner_erwerb_19_vst_new" model="account.tax.template">
+        <record id="tax_eu_inner_erwerb_0_vst_new" model="account.tax.template">
             <field name="name">0% Vorsteuer Innergemeinschaftlicher Erwerb</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">0% VSt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.0')"/>
-            <field name="invoice_account" ref="account_1402"/>
-            <field name="credit_note_account" ref="account_1402"/>
+            <field name="invoice_account" ref="account_de_skr04.account_1402"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_1402"/>
             <field name="parent" ref="tax_eu_inner_erwerb_0_vst_ust_new"/>
         </record>
-        <record id="tax_eu_inner_erwerb_19_ust_new" model="account.tax.template">
+        <record id="tax_eu_inner_erwerb_0_ust_new" model="account.tax.template">
             <field name="name">0% Umsatzsteuer Innergemeinschaftlicher Erwerb</field>
-            <field name="account" ref="root_de"/>
+            <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">0% USt</field>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.0')"/>
-            <field name="invoice_account" ref="account_3802"/>
-            <field name="credit_note_account" ref="account_3802"/>
+            <field name="invoice_account" ref="account_de_skr04.account_3802"/>
+            <field name="credit_note_account" ref="account_de_skr04.account_3802"/>
             <field name="parent" ref="tax_eu_inner_erwerb_0_vst_ust_new"/>
         </record>
 
-   <!-- Einfuhrumsatzsteuer, damit Kontenregeln ausgeführt werden -->
+   <!-- Einfuhrumsatzsteuer, eigene Abwicklung Zoll-->
         <record id="tax_dritt_vst_purchase_19_goods" model="account.tax.template">
             <field name="name">Einfuhrumsatzsteuer 19%</field>
             <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Einfuhrumsatzsteuer 19% wenn selber Zoll abgewickelt wird</field>
             <field name="legal_notice"></field>
             <field name="type">percentage</field>
-            <field eval="Decimal('0.0')" name="rate"/>
+            <field eval="Decimal('0.19')" name="rate"/>
             <field name="invoice_account" ref="account_de_skr04.account_1433"/>
             <field name="credit_note_account" ref="account_de_skr04.account_1433"/>
             <field name="group" ref="tax_group_vst_goods"/>
@@ -464,7 +465,7 @@
             <field name="description">Einfuhrumsatzsteuer 7% wenn selber Zoll abgewickelt wird</field>
             <field name="legal_notice"></field>
             <field name="type">percentage</field>
-            <field eval="Decimal('0.00')" name="rate"/>
+            <field eval="Decimal('0.07')" name="rate"/>
             <field name="invoice_account" ref="account_de_skr04.account_1433"/>
             <field name="credit_note_account" ref="account_de_skr04.account_1433"/>
             <field name="group" ref="tax_group_vst_goods"/>
@@ -495,7 +496,7 @@
         <record id="helper_tax_dritt_vst_purchase_7_goods" model="account.tax.template">
             <field name="name">Steuerfiktion, um Kontenregel (nach 5551) auszulösen, Betrag 0%; Bezug 7% </field>
             <field name="account" ref="account_de_skr04.root_de"/>
-            <field name="description">Einfuhrumsatzsteuer bei Einfuhr der Ware, wenn VST vom Zolldienstleister übernommen wird/field>
+            <field name="description">Einfuhrumsatzsteuer bei Einfuhr der Ware, wenn VST vom Zolldienstleister übernommen wird/field</field>
             <field name="legal_notice"></field>
             <field name="type">percentage</field>
             <field eval="Decimal('0.00')" name="rate"/>
@@ -515,7 +516,7 @@
             <field name="group" ref="tax_group_vst_goods"/>
         </record>
    <!-- Einfuhrumsatzsteuer  Waren, wenn Abwicklung über Zollbehöre ausgeführt werden -->
-        <record id="tax_dritt_vst_purchase_19_goods_cutoms" model="account.tax.template">
+        <record id="tax_dritt_vst_purchase_19_goods_customs" model="account.tax.template">
             <field name="name">Einfuhrumsatzsteuer 19%</field>
             <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Einfuhrumsatzsteuer bei Einfuhr der Ware, wenn VST vom Zolldienstleister übernommen wird</field>
@@ -526,10 +527,10 @@
             <field name="credit_note_account" ref="account_de_skr04.account_1433"/>
             <field name="group" ref="tax_group_customs_import"/>
         </record>
-        <record id="tax_dritt_vst_purchase_7_goods_cutoms" model="account.tax.template">
+        <record id="tax_dritt_vst_purchase_7_goods_customs" model="account.tax.template">
             <field name="name">Einfuhrumsatzsteuer 7% </field>
             <field name="account" ref="account_de_skr04.root_de"/>
-            <field name="description">Einfuhrumsatzsteuer bei Einfuhr der Ware, wenn VST vom Zolldienstleister übernommen wird/field>
+            <field name="description">Einfuhrumsatzsteuer bei Einfuhr der Ware, wenn VST vom Zolldienstleister übernommen wird</field>
             <field name="legal_notice"></field>
             <field name="type">percentage</field>
             <field eval="Decimal('0.07')" name="rate"/>
@@ -537,7 +538,7 @@
             <field name="credit_note_account" ref="account_de_skr04.account_1433"/>
             <field name="group" ref="tax_group_customs_import"/>
         </record>
-        <record id="tax_dritt_vst_purchase_0_goods_cutoms" model="account.tax.template">
+        <record id="tax_dritt_vst_purchase_0_goods_customs" model="account.tax.template">
             <field name="name">Einfuhrumsatzsteuer 0% </field>
             <field name="account" ref="account_de_skr04.root_de"/>
             <field name="description">Einfuhrumsatzsteuer bei Einfuhr der Ware, wenn VST vom Zolldienstleister übernommen wird</field>
@@ -548,5 +549,6 @@
             <field name="credit_note_account" ref="account_de_skr04.account_1433"/>
             <field name="group" ref="tax_group_customs_import"/>
         </record>
+        
     </data>
 </tryton>

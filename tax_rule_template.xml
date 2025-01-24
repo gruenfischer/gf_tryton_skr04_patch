@@ -1,0 +1,184 @@
+<?xml version="1.0" ?>
+<!-- This file is part of the account-de-skr04-module for Tryton from m-ds.de.
+ The COPYRIGHT file at the top level of
+ this repository contains the full copyright notices and license terms.-->
+<tryton>
+    <data>
+        <!--Rules Innergemeinschaftlicher ERwerb-->
+        <record id="tax_rule_purchase_EU_USTID" model="account.tax.rule.template">
+            <field name="name">Lieferant EU Unternehmen (mit USt-ID)</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="kind">purchase</field>
+        </record>
+
+        <record id="tax_rule_line_01" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_EU_USTID"/>
+            <field name="group" ref="tax_group_vst_goods"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_0_goods"/>
+            <field name="tax" ref="tax_eu_inner_erwerb_0_vst_ust_new"/>
+        </record>   
+                
+        <record id="tax_rule_line_02" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_EU_USTID"/>
+            <field name="group" ref="tax_group_vst_goods"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_7_goods"/>
+            <field name="tax" ref="tax_eu_inner_erwerb_7_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_03" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_EU_USTID"/>
+            <field name="group" ref="tax_group_vst_goods"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_19_goods"/>
+            <field name="tax" ref="tax_eu_inner_erwerb_19_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_04" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_EU_USTID"/>
+            <field name="group" ref="tax_group_vst_service"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_19_service"/>
+            <field name="tax" ref="tax_eu_s13b_abs1_19_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_05" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_EU_USTID"/>
+            <field name="group" ref="tax_group_vst_service"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_7_service"/>
+            <field name="tax" ref="tax_eu_s13b_abs1_7_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_06" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_EU_USTID"/>
+            <field name="group" ref="tax_group_vst_service"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_0_service"/>
+            <field name="tax" ref="tax_eu_s13b_abs1_0_vst_ust_new"/>
+        </record>
+            
+    <!-- Innergemeinschaftliche Lieferung-->
+        <record id="tax_rule_sale_EU_USTID" model="account.tax.rule.template">
+            <field name="name">Kunde EU Unternehmen (mit USt-ID)</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="kind">sale</field>
+        </record>
+
+        <record id="tax_rule_line_07" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_sale_EU_USTID"/>
+            <field name="group" ref="tax_group_ust_goods"/>
+            <field name="tax" ref="tax_inner_eu_not_taxable"/>
+        </record>
+            <record id="tax_rule_line_08" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_sale_EU_USTID"/>
+            <field name="group" ref="tax_group_ust_service"/>
+            <field name="tax" ref="tax_de_eu_delivery_service"/>
+        </record>
+
+    <!-- Drittland Erwerb -->
+        <record id="tax_rule_purchase_dritt_USTID" model="account.tax.rule.template">
+            <field name="name">Lieferant Drittland Eigene Zollabwicklung</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="kind">purchase</field>
+        </record>
+
+        <record id="tax_rule_line_9" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID"/>
+            <field name="group" ref="tax_group_vst_service"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_19_service"/>
+            <field name="tax" ref="tax_dritt_s13b_abs2_19_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_10" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID"/>
+            <field name="group" ref="tax_group_vst_service"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_7_service"/>
+            <field name="tax" ref="tax_dritt_s13b_abs2_7_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_11" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID"/>
+            <field name="group" ref="tax_group_vst_service"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_0_service"/>
+            <field name="tax" ref="tax_dritt_s13b_abs2_0_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_12" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID"/>
+            <field name="group" ref="tax_group_vst_goods"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_19_goods"/>
+            <field name="tax" ref="tax_dritt_vst_purchase_19_goods"/>
+        </record>
+        <record id="tax_rule_line_13" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID"/>
+            <field name="group" ref="tax_group_vst_goods"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_7_goods"/>
+            <field name="tax" ref="tax_dritt_vst_purchase_7_goods"/>
+        </record>
+        <record id="tax_rule_line_14" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID"/>
+            <field name="group" ref="tax_group_vst_goods"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_0_goods"/>
+            <field name="tax" ref="tax_dritt_vst_purchase_0_goods"/>
+        </record>
+
+        <record id="tax_rule_purchase_dritt_USTID_customsservice" model="account.tax.rule.template">
+            <field name="name">Lieferant Drittland über Zolldienstleister</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="kind">purchase</field>
+        </record>
+
+        <record id="tax_rule_line_15" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID_customsservice"/>
+            <field name="group" ref="tax_group_vst_service"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_19_service"/>
+            <field name="tax" ref="tax_dritt_s13b_abs2_19_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_16" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID_customsservice"/>
+            <field name="group" ref="tax_group_vst_service"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_7_service"/>
+            <field name="tax" ref="tax_dritt_s13b_abs2_7_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_17" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID_customsservice"/>
+            <field name="group" ref="tax_group_vst_service"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_0_service"/>
+            <field name="tax" ref="tax_dritt_s13b_abs2_0_vst_ust_new"/>
+        </record>
+        <record id="tax_rule_line_18" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID_customsservice"/>
+            <field name="group" ref="tax_group_vst_goods"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_19_goods"/>
+            <field name="tax" ref="helper_tax_dritt_vst_purchase_19_goods"/>
+        </record>
+        <record id="tax_rule_line_19" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID_customsservice"/>
+            <field name="group" ref="tax_group_vst_goods"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_7_goods"/>
+            <field name="tax" ref="helper_tax_dritt_vst_purchase_7_goods"/>
+        </record>
+        <record id="tax_rule_line_20" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_purchase_dritt_USTID_customsservice"/>
+            <field name="group" ref="tax_group_vst_goods"/>
+            <field name="origin_tax" ref="tax_de_vst_purchase_0_goods"/>
+            <field name="tax" ref="helper_tax_dritt_vst_purchase_0_goods"/>
+        </record>
+
+
+
+        <!-- Kunde Drittland mit UStID-->
+        <record id="tax_rule_sale_dritt_USTID" model="account.tax.rule.template">
+            <field name="name">Kunde Drittland</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="kind">sale</field>
+        </record>
+        <record id="tax_rule_line_21" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_sale_dritt_USTID"/>
+            <field name="group" ref="tax_group_ust_goods"/>
+            <field name="tax" ref="tax_innner_au_delivery"/>
+        </record>
+            <record id="tax_rule_line_22" model="account.tax.rule.line.template">
+            <field name="rule" ref="tax_rule_sale_dritt_USTID"/>
+            <field name="group" ref="tax_group_ust_service"/>
+            <field name="tax" ref="tax_de_au_delivery_service"/>
+        </record>
+
+        <!-- Kunde Drittland ohne UStID noch nicht fertig-->
+        
+        <record id="tax_rule_sale_EU_ohne_USID" model="account.tax.rule.template">
+            <field name="name">Kunde EU Privatperson (ohne USt-ID)</field>
+            <field name="account" ref="account_de_skr04.root_de"/>
+            <field name="kind">sale</field>
+        </record>
+    </data>
+</tryton>
